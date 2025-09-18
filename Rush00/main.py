@@ -6,7 +6,7 @@ def main():
 R...
 .K..
 ..P.
-....\
+...\
 """
     checkmate(board) 
 
@@ -15,9 +15,6 @@ R...
 .K\
 """
     checkmate(board2)  # ควรพิมพ์ Fail
-
-
-
 
 if __name__ == "__main__" : 
     main()
