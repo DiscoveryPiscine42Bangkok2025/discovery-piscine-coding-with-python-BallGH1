@@ -67,7 +67,7 @@ class Queen(Piece):
                Bishop(self.x, self.y).can_attack(king, board)
 
 
-# ----------- ตัวอย่างการใช้ -----------
+#สร้างบอร์ด
 def can_any_piece_capture_king(board_str: str) -> str:
     board = [list(line) for line in board_str.strip().splitlines()]
     n = len(board)
@@ -91,13 +91,20 @@ def can_any_piece_capture_king(board_str: str) -> str:
                 pieces.append(Queen(i, j))
 
     if not king:
-        return "false"
+        return False
 
     for piece in pieces:
         if piece.can_attack(king, board):
-            return "Success"
+            return True
 
-    return "false"
+    return False
+
+def checkmate(board: str):
+    result = can_any_piece_capture_king(board)  
+    if result == True:
+        print("Success")
+    else:
+        print("Fail")
 
 
 
