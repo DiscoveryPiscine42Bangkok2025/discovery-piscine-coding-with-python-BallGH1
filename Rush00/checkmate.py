@@ -68,16 +68,25 @@ class Queen(Piece):
 
 
 #สร้างบอร์ด
-def can_any_piece_capture_king(board_str: str) -> str:
-    board = [list(line) for line in board_str.strip().splitlines()]
+def can_any_piece_capture_king(board_str: str) -> bool:
+    allowed = {'.', 'K', 'Q', 'R', 'B', 'P'}  # ตัวหมากที่อนุญาต
+    rows = board_str.strip().splitlines()
+    board = []
+    for line in rows:
+        row = []
+        for ch in line:
+            if ch in allowed:
+                row.append(ch)
+            else:
+                row.append('.')   # แปลงทุกตัวแปลก ๆ เป็นช่องว่าง
+        board.append(row)
     n = len(board)
 
     king = None
     pieces: List[Piece] = []
 
-    # สร้าง object ของแต่ละหมาก
     for i in range(n):
-        for j in range(n):
+        for j in range(len(board[i])):
             ch = board[i][j]
             if ch == 'K':
                 king = King(i, j)
