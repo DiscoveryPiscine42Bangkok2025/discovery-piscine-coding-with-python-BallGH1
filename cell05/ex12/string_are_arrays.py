@@ -7,7 +7,8 @@ else:
     found = False
     for ch in s:
         if ch == "z":
-            print("z")
+            print("z" , end = "")
             found = True
     if not found:
         print("none")
+    print()
